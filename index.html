@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Frustración, Consumación y Agotamiento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .titulo-principal {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitulo {
+            text-align: center;
+            color: #f0f0f0;
+            font-size: 1.3em;
+            margin-bottom: 40px;
+        }
+        
+        .pizarra {
+            background: #faf9f6;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        .seccion {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .seccion:last-child {
+            border-bottom: none;
+        }
+        
+        .seccion-titulo {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .icono {
+            font-size: 1.5em;
+        }
+        
+        .contenido {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .concepto {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #5c6bc0;
+        }
+        
+        .concepto-titulo {
+            font-weight: bold;
+            color: #283593;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .iter-visual {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px solid #ffa726;
+        }
+        
+        .iter-titulo {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+        
+        .fases {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .fase {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ff9800;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .fase-nombre {
+            font-weight: bold;
+            color: #e65100;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .fase-desc {
+            font-size: 0.85em;
+            color: #555;
+        }
+        
+        .fase-destaque {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .fase-destaque .fase-nombre,
+        .fase-destaque .fase-desc {
+            color: white;
+        }
+        
+        .flecha {
+            font-size: 1.5em;
+            color: #ff9800;
+            font-weight: bold;
+        }
+        
+        .articulo {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ff9800;
+        }
+        
+        .articulo-num {
+            font-weight: bold;
+            color: #e65100;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .tabla {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        
+        .tabla th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .tabla td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tabla tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .ejemplo {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .ejemplo-titulo {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+        
+        .caso-practico {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 3px solid #ffc107;
+        }
+        
+        .caso-titulo {
+            font-weight: bold;
+            color: #f57f17;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .teoria {
+            background: #f3e5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+        }
+        
+        .teoria-titulo {
+            font-weight: bold;
+            color: #6a1b9a;
+            margin-bottom: 8px;
+        }
+        
+        .critica {
+            background: #ffebee;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0 10px 20px;
+            border-left: 4px solid #f44336;
+        }
+        
+        .critica-titulo {
+            font-weight: bold;
+            color: #c62828;
+            margin-bottom: 5px;
+        }
+        
+        .diferencias {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .box-dif {
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid;
+        }
+        
+        .box-tentativa {
+            background: #ffe0b2;
+            border-color: #ff9800;
+        }
+        
+        .box-frustracion {
+            background: #fff9c4;
+            border-color: #fbc02d;
+        }
+        
+        .box-consumacion {
+            background: #c8e6c9;
+            border-color: #66bb6a;
+        }
+        
+        .box-titulo {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .box-tentativa .box-titulo {
+            color: #e65100;
+        }
+        
+        .box-frustracion .box-titulo {
+            color: #f57f17;
+        }
+        
+        .box-consumacion .box-titulo {
+            color: #2e7d32;
+        }
+        
+        .nota {
+            background: #e1f5fe;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #0288d1;
+            margin: 15px 0;
+        }
+        
+        .nota-titulo {
+            font-weight: bold;
+            color: #01579b;
+            margin-bottom: 8px;
+        }
+        
+        .penalidad {
+            background: #fce4ec;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .penalidad-titulo {
+            font-weight: bold;
+            color: #c2185b;
+            margin-bottom: 10px;
+        }
+        
+        .destacado {
+            background: #fff9c4;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 4px solid #fbc02d;
+        }
+        
+        .formula {
+            background: #eceff1;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #37474f;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            line-height: 1.8;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .diferencias, .fases {
+                grid-template-columns: 1fr;
+            }
+            
+            .titulo-principal {
+                font-size: 1.8em;
+            }
+            
+            .pizarra {
+                padding: 20px;
+            }
+            
+            .flecha {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo-principal">⚖️ DERECHO PENAL II</h1>
+        <div class="subtitulo">Módulo 3: Iter Criminis - Frustración, Consumación y Agotamiento</div>
+        
+        <div class="pizarra">
+            
+            <!-- Sección 1: RECORDATORIO ITER CRIMINIS -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">🛤️</span>
+                    RECORDATORIO: ITER CRIMINIS
+                </div>
+                <div class="contenido">
+                    <div class="iter-visual">
+                        <div class="iter-titulo">📍 ETAPAS DEL ITER CRIMINIS</div>
+                        <div class="fases">
+                            <div class="fase">
+                                <div class="fase-nombre">PROPOSICIÓN</div>
+                                <div class="fase-desc">Proponer el delito</div>
+                            </div>
+                            <span class="flecha">→</span>
+                            <div class="fase">
+                                <div class="fase-nombre">CONSPIRACIÓN</div>
+                                <div class="fase-desc">Concertarse</div>
+                            </div>
+                            <span class="flecha">→</span>
+                            <div class="fase">
+                                <div class="fase-nombre">TENTATIVA</div>
+                                <div class="fase-desc">Inicio de ejecución</div>
+                            </div>
+                            <span class="flecha">→</span>
+                            <div class="fase fase-destaque">
+                                <div class="fase-nombre">FRUSTRACIÓN</div>
+                                <div class="fase-desc">Conducta completa, sin resultado</div>
+                            </div>
+                            <span class="flecha">→</span>
+                            <div class="fase fase-destaque">
+                                <div class="fase-nombre">CONSUMACIÓN</div>
+                                <div class="fase-desc">Delito completo</div>
+                            </div>
+                            <span class="flecha">→</span>
+                            <div class="fase fase-destaque">
+                                <div class="fase-nombre">AGOTAMIENTO</div>
+                                <div class="fase-desc">Logro del propósito</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 2: EL DELITO FRUSTRADO -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">⚠️</span>
+                    EL DELITO FRUSTRADO
+                </div>
+                <div class="contenido">
+                    <div class="articulo">
+                        <div class="articulo-num">📜 Art. 7°, inc. 2° del CP</div>
+                        <p style="font-style: italic; line-height: 1.7;">
+                            "Hay crimen o simple delito frustrado cuando el delincuente <strong>pone de su parte todo lo necesario</strong> para que el crimen o simple delito se consume y esto <strong>NO se verifica por causas independientes de su voluntad</strong>."
+                        </p>
+                    </div>
+                    
+                    <div class="concepto">
+                        <div class="concepto-titulo">¿Qué es el Delito Frustrado?</div>
+                        <p style="line-height: 1.8;">
+                            A diferencia de la tentativa, en el delito frustrado la <strong>conducta típica está completa</strong>. Al sujeto <strong>NO le resta nada por hacer</strong> y pese a ello el delito NO se consuma, por <strong>faltar el resultado</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="diferencias" style="margin-top: 25px;">
+                        <div class="box-dif box-tentativa">
+                            <div class="box-titulo">🎯 TENTATIVA</div>
+                            <ul style="line-height: 1.8;">
+                                <li>Principio de ejecución</li>
+                                <li>Faltan actos para completar conducta</li>
+                                <li>NO hay conducta completa</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="box-dif box-frustracion">
+                            <div class="box-titulo">⚠️ FRUSTRACIÓN</div>
+                            <ul style="line-height: 1.8;">
+                                <li>Conducta típica COMPLETA</li>
+                                <li>NO falta nada por hacer</li>
+                                <li>Falta el RESULTADO</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="box-dif box-consumacion">
+                            <div class="box-titulo">✓ CONSUMACIÓN</div>
+                            <ul style="line-height: 1.8;">
+                                <li>Conducta típica completa</li>
+                                <li>Resultado producido</li>
+                                <li>Delito perfeccionado</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📊 Ámbito de Aplicación</div>
+                        <div class="articulo">
+                            <div class="articulo-num">Art. 9° CP</div>
+                            <p>"Las faltas sólo se castigan cuando han sido consumadas"</p>
+                        </div>
+                        <ul style="margin-top: 15px;">
+                            <li><strong>SÍ procede:</strong> Frustración de crímenes y simples delitos</li>
+                            <li><strong>NO procede:</strong> Frustración de faltas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="penalidad">
+                        <div class="penalidad-titulo">⚖️ PENALIDAD DE LA FRUSTRACIÓN</div>
+                        <table class="tabla">
+                            <thead>
+                                <tr>
+                                    <th>Forma de Participación</th>
+                                    <th>Pena</th>
+                                    <th>Artículo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Autores</strong> de frustración</td>
+                                    <td>Pena inferior en <strong>1 grado</strong></td>
+                                    <td>Art. 51</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cómplices</strong> de frustración</td>
+                                    <td>Pena inferior en <strong>2 grados</strong></td>
+                                    <td>Art. 52</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Encubridores</strong> de frustración</td>
+                                    <td>Pena inferior en <strong>3 grados</strong></td>
+                                    <td>Art. 53</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="nota" style="margin-top: 15px;">
+                            <div class="nota-titulo">Art. 55 CP:</div>
+                            <p>Estas disposiciones NO aplican cuando la frustración se halle <strong>especialmente penada</strong> por la ley.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 3: ESTRUCTURA DEL DELITO FRUSTRADO -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">🏗️</span>
+                    ESTRUCTURA TÍPICA DEL DELITO FRUSTRADO
+                </div>
+                <div class="contenido">
+                    <div class="concepto">
+                        <div class="concepto-titulo">Elementos de la Frustración</div>
+                        
+                        <p style="font-weight: bold; color: #667eea; font-size: 1.1em; margin: 20px 0 10px 0;">📍 TIPO OBJETIVO</p>
+                        
+                        <div class="destacado">
+                            <p style="font-weight: bold; margin-bottom: 10px;">1️⃣ Realización TOTAL de la conducta típica</p>
+                            <p>El sujeto ha realizado <strong>TODOS los actos ejecutivos</strong>. NO le queda nada por hacer.</p>
+                        </div>
+                        
+                        <div class="destacado" style="background: #ffebee; border-color: #f44336;">
+                            <p style="font-weight: bold; margin-bottom: 10px;">2️⃣ Que el resultado NO se produzca por causas ajenas</p>
+                            <p>El resultado NO se verifica por <strong>causas independientes de su voluntad</strong>.</p>
+                        </div>
+                        
+                        <p style="font-weight: bold; color: #667eea; font-size: 1.1em; margin: 20px 0 10px 0;">📍 TIPO SUBJETIVO</p>
+                        
+                        <div class="destacado" style="background: #fff3e0; border-color: #ff9800;">
+                            <p style="font-weight: bold; margin-bottom: 10px;">🎯 DOLO DE CONSUMACIÓN</p>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Conocimiento del riesgo inherente a la conducta típica</li>
+                                <li>El Art. 7° inc. 2° exige que el delincuente ponga de su parte todo lo necesario para que se consume</li>
+                                <li>Incompatible con el delito <strong>imprudente</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="nota" style="margin-top: 20px;">
+                        <div class="nota-titulo">⚠️ IMPORTANTE: Delitos de Resultado Material</div>
+                        <p style="margin-top: 10px; line-height: 1.7;">
+                            El delito frustrado <strong>SÓLO cabe</strong> en los <strong>delitos de resultado material</strong>:
+                        </p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Son aquellos en que el tipo penal requiere para su consumación la producción de un <strong>resultado separado</strong> de los actos de ejecución</li>
+                            <li><strong>Ejemplo:</strong> Homicidio (se requiere la muerte)</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-weight: bold; color: #c62828;">
+                            ❌ En los delitos de mera actividad NO existe frustración (la realización total de la conducta implica su consumación)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 4: REALIZACIÓN TOTAL DE LA CONDUCTA -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">🔍</span>
+                    ¿CUÁNDO HAY REALIZACIÓN TOTAL DE LA CONDUCTA?
+                </div>
+                <div class="contenido">
+                    <div class="nota">
+                        <div class="nota-titulo">🔑 Pregunta Clave:</div>
+                        <p style="margin-top: 8px;">
+                            ¿Cómo determinar cuándo se han llevado a cabo <strong>TODOS</strong> los actos ejecutivos?
+                        </p>
+                    </div>
+                    
+                    <!-- Teoría Subjetiva -->
+                    <div class="teoria">
+                        <div class="teoria-titulo">A) TEORÍA SUBJETIVA</div>
+                        <p style="margin: 10px 0;"><strong>Criterio:</strong> Depende de la <strong>representación del sujeto</strong></p>
+                        <p>El sujeto ha ejecutado toda la conducta cuando, desde el punto de vista de su representación, con el conocimiento de que dispone en el momento de obrar, ésta se encuentra concluida.</p>
+                        <div class="critica" style="margin-top: 10px;">
+                            <div class="critica-titulo">❌ Crítica:</div>
+                            <p>Deja entregada la determinación del tipo frustrado al <strong>autor</strong> y NO a la <strong>ley</strong>.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Teoría Objetiva -->
+                    <div class="teoria" style="background: #c8e6c9; border-color: #66bb6a;">
+                        <div class="teoria-titulo" style="color: #2e7d32;">B) TEORÍA OBJETIVA ⭐ (CORRECTA)</div>
+                        <p style="margin: 10px 0;"><strong>Criterio:</strong> Depende de la <strong>descripción del tipo</strong></p>
+                        
+                        <div class="destacado" style="background: white; margin-top: 15px;">
+                            <p style="font-weight: bold; margin-bottom: 8px;">El Art. 7° inc. 2° exige:</p>
+                            <p style="font-style: italic;">"Que el sujeto ponga de su parte todo lo necesario para que el crimen o simple delito se consume"</p>
+                            <p style="margin-top: 10px;">Esto significa que la conducta típica se encuentre <strong>completamente realizada en la realidad objetiva</strong>.</p>
+                        </div>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Consecuencia:</div>
+                            <p>Si el sujeto <strong>cree</strong> haber realizado completamente la conducta, pero ello NO es así:</p>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>Incurre en una <strong>tentativa punible</strong></li>
+                                <li>Respecto del delito frustrado: habría error de tipo al revés, <strong>impune a título de frustración</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 5: CAUSAS AJENAS A LA VOLUNTAD -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">⚡</span>
+                    CAUSAS AJENAS A LA VOLUNTAD DEL AGENTE
+                </div>
+                <div class="contenido">
+                    <div class="concepto">
+                        <div class="concepto-titulo">Requisito Esencial de la Frustración</div>
+                        <p style="line-height: 1.8;">
+                            El resultado NO se produce por <strong>causas independientes de la voluntad</strong> del autor.
+                        </p>
+                    </div>
+                    
+                    <div class="ejemplo">
+                        <div class="ejemplo-titulo">✓ Ejemplo de Causa Ajena:</div>
+                        <p>La eficaz intervención médica a la víctima de envenenamiento.</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>El autor administró el veneno (conducta completa)</li>
+                            <li>Pero la víctima NO murió por intervención médica oportuna (causa ajena)</li>
+                            <li><strong>Resultado:</strong> Homicidio frustrado</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nota" style="background: #ffebee; border-color: #f44336;">
+                        <div class="nota-titulo" style="color: #c62828;">❌ Si la consumación NO se verifica por causas DEPENDIENTES de la voluntad:</div>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>NO existe frustración</strong> posible</li>
+                            <li>Falta un elemento del tipo objetivo de frustración</li>
+                            <li>Estaríamos ante una <strong>tentativa desistida</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="destacado" style="background: #e3f2fd; border-color: #2196f3;">
+                        <p style="font-weight: bold; margin-bottom: 10px;">🔄 ARREPENTIMIENTO EFICAZ</p>
+                        <p>Si realizados todos los actos ejecutivos, el sujeto <strong>se desiste y logra evitar el resultado</strong>:</p>
+                        <p style="margin-top: 8px; color: #1565c0; font-weight: bold;">
+                            → Hay un ARREPENTIMIENTO EFICAZ (desistimiento activo) = IMPUNE
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 6: CASOS PRÁCTICOS FRUSTRACIÓN -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">⚖️</span>
+                    CASOS PRÁCTICOS: FRUSTRACIÓN
+                </div>
+                <div class="contenido">
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 1: El Arma que no Dispara</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A compra un revólver, lo carga, se dirige al domicilio de su enemigo, espera que salga, al divisarlo le apunta, jala el gatillo, pero el proyectil balístico <strong>no sale de la recámara</strong>.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: FRUSTRACIÓN</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>La conducta está <strong>completa</strong> (apuntar + jalar gatillo)</li>
+                                <li>NO se produjo el resultado (muerte)</li>
+                                <li>Por causa ajena (falla mecánica del arma)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 2: El Disparo Desviado</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            La misma situación, pero producto de la <strong>vibración de la mano</strong> con el disparo, éste se desvía y pasa por el lado de la víctima.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: FRUSTRACIÓN</div>
+                            <p>Conducta completa, resultado no producido por causa ajena (vibración involuntaria).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 3: El Encendedor Salvavidas</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            La misma situación, pero el disparo da en un <strong>encendedor</strong> que el afectado llevaba en el bolsillo de su camisa.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: FRUSTRACIÓN</div>
+                            <p>Conducta completa, causa ajena (objeto fortuito) impidió el resultado.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 4: Lesiones Graves (Concurso de Delitos)</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            La misma situación, pero el disparo da en el rostro y la víctima queda <strong>gravemente lesionada</strong> (pero no muere).
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: DOBLE CALIFICACIÓN</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li><strong>Homicidio FRUSTRADO</strong> (quería matar pero no lo logró)</li>
+                                <li><strong>Lesiones graves CONSUMADAS</strong> (delito subyacente consumado)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 7: EL DELITO CONSUMADO -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">✅</span>
+                    EL DELITO CONSUMADO
+                </div>
+                <div class="contenido">
+                    <div class="concepto">
+                        <div class="concepto-titulo">Concepto</div>
+                        <p style="line-height: 1.8;">
+                            Consiste en la <strong>realización del hecho típico</strong>. El autor ha satisfecho <strong>íntegramente</strong>, desde un punto de vista objetivo y subjetivo, la descripción de la figura delictiva.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplo:</div>
+                            El homicidio se consuma con la <strong>muerte</strong> de la víctima.
+                        </div>
+                    </div>
+                    
+                    <div class="nota">
+                        <div class="nota-titulo">💡 Relación con Tentativa y Frustración</div>
+                        <p style="margin-top: 10px;">La construcción de los tipos dependientes de tentativa y frustración se realiza:</p>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li>Interpretando el <strong>tipo autónomo de consumación</strong> de la PE</li>
+                            <li>Los preceptos establecidos en el Art. 7° inc. 2° o 3°</li>
+                        </ul>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplo: Homicidio Simple Frustrado en Coautoría</div>
+                            <p>Surge de la puesta en relación de:</p>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li><strong>Art. 391 N° 2</strong> (homicidio simple)</li>
+                                <li><strong>Art. 7 inc. 2°</strong> (frustración)</li>
+                                <li><strong>Art. 15 N° 1</strong> (coautoría)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📊 Ámbito de Aplicación</div>
+                        <div class="articulo">
+                            <div class="articulo-num">Art. 9° CP</div>
+                            <p>"Las faltas sólo se castigan cuando han sido consumadas"</p>
+                        </div>
+                        <p style="margin-top: 15px;"><strong>Procede respecto de:</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>Los crímenes</li>
+                            <li>Los simples delitos</li>
+                            <li>Las <strong>faltas</strong> (SOLO cuando están consumadas)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="penalidad">
+                        <div class="penalidad-titulo">⚖️ PENALIDAD DEL DELITO CONSUMADO</div>
+                        <div class="articulo">
+                            <div class="articulo-num">Art. 50 CP - Crímenes y Simples Delitos</div>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>A los autores de crimen o simple delito consumado se impondrá la pena que para éste se hallare señalada por la ley</li>
+                                <li><strong>Siempre que la ley designe la pena de un delito, se entiende que la impone al delito consumado</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="articulo" style="margin-top: 15px;">
+                            <div class="articulo-num">Faltas (Libro Tercero del CP - Arts. 494 y ss.)</div>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li><strong>Regla general:</strong> Pena de multa</li>
+                                <li><strong>Excepción:</strong> Art. 494 bis del CP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 8: MOMENTO DE LA CONSUMACIÓN -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">⏰</span>
+                    MOMENTO EN QUE SE VERIFICA LA CONSUMACIÓN
+                </div>
+                <div class="contenido">
+                    <div class="nota">
+                        <div class="nota-titulo">🎯 Importancia de Determinar el Momento</div>
+                        <p style="margin-top: 10px;">La ley le asigna efectos a la consumación en:</p>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li><strong>Prescripción</strong> (¿desde cuándo corre el plazo?)</li>
+                            <li><strong>Deslinde entre complicidad y encubrimiento</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="destacado" style="background: #e3f2fd; border-color: #2196f3; margin-top: 20px;">
+                        <p style="font-weight: bold; margin-bottom: 10px;">📌 El momento se determina según la ESTRUCTURA del tipo penal:</p>
+                    </div>
+                    
+                    <!-- Delitos de Mera Actividad -->
+                    <div class="concepto" style="margin-top: 20px;">
+                        <div class="concepto-titulo">1️⃣ DELITOS DE MERA ACTIVIDAD</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Aquellos para cuya consumación <strong>basta con la realización completa</strong> de la actividad descrita en el tipo.</p>
+                        <p><strong>NO es necesario</strong> que se produzca algún resultado.</p>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplos:</div>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>Falso testimonio</strong> (Arts. 206 y 207): Se consuma con la declaración mendaz</li>
+                                <li><strong>Violación de morada:</strong> Se consuma al entrar</li>
+                                <li><strong>Injurias:</strong> Se consuman al proferirlas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Delitos de Resultado -->
+                    <div class="concepto" style="margin-top: 20px;">
+                        <div class="concepto-titulo">2️⃣ DELITOS DE RESULTADO</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Aquellos que requieren para su consumación la producción de un <strong>resultado separado</strong> de la conducta que lo produce.</p>
+                        <p>Exigen un cambio, modificación o alteración del mundo exterior que se manifiesta en la <strong>lesión o puesta en peligro</strong> del bien jurídico protegido.</p>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplos:</div>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>Homicidio simple</strong> (Art. 391 N° 2): Se consuma con la muerte</li>
+                                <li><strong>Lesiones:</strong> Se consuman con el daño corporal</li>
+                                <li><strong>Hurto:</strong> Se consuma con la apropiación</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Delitos Simples o Instantáneos -->
+                    <div class="concepto" style="margin-top: 20px;">
+                        <div class="concepto-titulo">3️⃣ DELITOS SIMPLES O INSTANTÁNEOS</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Se perfeccionan de manera <strong>inmediata</strong>, ya sea:</p>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Con la sola realización de la conducta (delitos de mera actividad), o</li>
+                            <li>Con la sola producción del resultado (delitos de resultado)</li>
+                        </ul>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplos:</div>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>Falso testimonio:</strong> Se consuma con la declaración mendaz</li>
+                                <li><strong>Homicidio simple:</strong> Se consuma con la muerte</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Delitos Habituales -->
+                    <div class="concepto" style="margin-top: 20px;">
+                        <div class="concepto-titulo">4️⃣ DELITOS HABITUALES</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Se perfeccionan con la <strong>repetición</strong> de una determinada conducta del agente.</p>
+                        <p>Es la <strong>repetición</strong> la que da origen a la incriminación o a la calificación del tipo penal.</p>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplo:</div>
+                            <p><strong>Favorecimiento de la prostitución de menores (Art. 367):</strong></p>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>La antigua redacción exigía <strong>habitualidad</strong> para la incriminación</li>
+                                <li>Hoy la habitualidad es requisito del <strong>tipo calificado</strong> (Art. 367, inc. 2°)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Delitos Continuados -->
+                    <div class="concepto" style="margin-top: 20px; background: #fff9c4; border-color: #fbc02d;">
+                        <div class="concepto-titulo" style="color: #f57f17;">5️⃣ DELITOS CONTINUADOS ⭐</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Constituyen una <strong>unidad delictiva de carácter normativo</strong> (un solo delito), cuando concurren los siguientes elementos:</p>
+                        
+                        <div class="destacado" style="background: white; margin-top: 15px;">
+                            <p style="font-weight: bold; margin-bottom: 10px;">Requisitos:</p>
+                            <ol style="margin-left: 25px; line-height: 1.8;">
+                                <li><strong>Unidad de sujeto activo</strong></li>
+                                <li><strong>Pluralidad de conductas</strong>, cada una de las cuales configura por sí misma un delito independiente</li>
+                                <li>Una cierta <strong>separación temporal</strong> entre las realizaciones típicas</li>
+                                <li>Una cierta <strong>identidad</strong> entre los tipos penales que se integran a la continuidad delictiva</li>
+                                <li><strong>Unidad de sujeto pasivo</strong> (en bienes jurídicos personalísimos - requisito discutido)</li>
+                                <li>Una <strong>conexión específica</strong> entre la pluralidad de conductas en solución de continuidad</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="caso-practico" style="margin-top: 20px;">
+                            <div class="caso-titulo">📌 CASO PRÁCTICO: Los 4 Cheques Falsos</div>
+                            <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                                El día 30 de Septiembre de 2010, Julio César González concurrió a diversos lugares de Santiago para cobrar <strong>4 cheques falsos</strong> en distintas sucursales:
+                            </p>
+                            <ul style="margin: 15px 0 15px 25px; line-height: 1.8;">
+                                <li>Serie 2194558 por $478.500 (Sucursal Renca)</li>
+                                <li>Serie 2194562 por $497.500 (Sucursal Independencia)</li>
+                                <li>Serie 2194553 por $497.500 (Sucursal Chicureo)</li>
+                                <li>Serie 2194543 por $300.000 (Servipag La Florida)</li>
+                            </ul>
+                            <p style="margin-top: 10px;">Todos los instrumentos mercantiles eran <strong>falsos</strong>, con firma apócrifa.</p>
+                            
+                            <div class="ejemplo" style="margin-top: 15px;">
+                                <div class="ejemplo-titulo">✓ Solución: DELITO CONTINUADO</div>
+                                <p><strong>4 usos maliciosos de instrumento privado mercantil</strong> configuran UN SOLO delito continuado porque:</p>
+                                <ul style="margin-left: 20px; margin-top: 8px;">
+                                    <li>Mismo sujeto activo</li>
+                                    <li>Pluralidad de conductas (4 usos)</li>
+                                    <li>Mismo día (conexión temporal)</li>
+                                    <li>Mismo tipo penal</li>
+                                    <li>Plan unitario</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="nota" style="margin-top: 15px; background: #ffebee; border-color: #f44336;">
+                            <div class="nota-titulo" style="color: #c62828;">⚠️ PREGUNTA CONTROVERTIDA:</div>
+                            <p style="margin-top: 8px; font-weight: bold;">
+                                ¿Es aplicable el delito continuado en los delitos de violación o abusos sexuales?
+                            </p>
+                            <p style="margin-top: 8px;">Muy discutido por tratarse de bienes jurídicos <strong>personalísimos</strong>.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Delitos Permanentes -->
+                    <div class="concepto" style="margin-top: 20px; background: #ffebee; border-color: #f44336;">
+                        <div class="concepto-titulo" style="color: #c62828;">6️⃣ DELITOS PERMANENTES ⚠️</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Aquellos cuya consumación <strong>se prolonga en el tiempo</strong>, mientras dure el estado delictivo.</p>
+                        <p style="margin-top: 10px;">Suponen el <strong>mantenimiento de una situación antijurídica</strong> de cierta duración por la voluntad del autor.</p>
+                        <p style="margin-top: 10px;">Dicho mantenimiento <strong>sigue realizando el tipo</strong>, por lo que el delito <strong>se sigue consumando</strong> hasta que se abandona la situación antijurídica.</p>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplos:</div>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>Secuestro</strong> (Arts. 141 y 142): Se consuma desde el momento de la privación de libertad y continúa consumándose mientras dure el secuestro</li>
+                                <li><strong>Sustracción de personas</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destacado" style="background: white; margin-top: 15px;">
+                            <p style="font-weight: bold; color: #c62828;">⚠️ PROBLEMA PROCESAL:</p>
+                            <p style="margin-top: 8px;">¿Desde cuándo se comienza a contar la <strong>prescripción</strong>?</p>
+                            <p style="margin-top: 8px; font-weight: bold; color: #2e7d32;">
+                                ✓ El plazo comienza a correr cuando <strong>cesa el mantenimiento</strong> del estado antijurídico.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Delitos de Estado -->
+                    <div class="concepto" style="margin-top: 20px;">
+                        <div class="concepto-titulo">7️⃣ DELITOS DE ESTADO</div>
+                        <p style="margin: 10px 0;"><strong>Concepto:</strong> Aquellos en los que a pesar de crear un <strong>estado antijurídico duradero</strong>, la consumación <strong>cesa desde su aparición</strong>, porque el tipo sólo describe la <strong>producción del estado</strong> y NO su mantenimiento.</p>
+                        
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">Ejemplo:</div>
+                            <p><strong>Bigamia (Art. 382):</strong></p>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>Se consuma al contraer el segundo matrimonio</li>
+                                <li>Aunque el estado de bigamia continúe, el delito NO sigue consumándose</li>
+                                <li>La prescripción corre desde el momento de la consumación</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destacado" style="margin-top: 15px;">
+                            <p style="font-weight: bold;">🔍 Diferencia con Delitos Permanentes:</p>
+                            <table class="tabla" style="margin-top: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th>Delitos Permanentes</th>
+                                        <th>Delitos de Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Se siguen consumando mientras dure el estado</td>
+                                        <td>Se consuman una sola vez al crear el estado</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prescripción: desde que cesa el estado</td>
+                                        <td>Prescripción: desde la consumación inicial</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ej.: Secuestro</td>
+                                        <td>Ej.: Bigamia</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 9: AGOTAMIENTO DEL DELITO -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">🏁</span>
+                    AGOTAMIENTO DEL DELITO
+                </div>
+                <div class="contenido">
+                    <div class="concepto">
+                        <div class="concepto-titulo">Concepto</div>
+                        <p style="line-height: 1.8;">
+                            Es una etapa <strong>posterior a la consumación</strong> del delito, en la que el autor <strong>logra el resultado perseguido</strong> con la comisión de la conducta típica.
+                        </p>
+                        <p style="margin-top: 10px;">
+                            El delito está <strong>agotado</strong> cuando el sujeto consiguió ese <strong>propósito ulterior</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="iter-visual">
+                        <div class="iter-titulo">📍 CONSUMACIÓN vs AGOTAMIENTO</div>
+                        <div class="fases">
+                            <div class="fase fase-destaque">
+                                <div class="fase-nombre">CONSUMACIÓN</div>
+                                <div class="fase-desc">Delito completo (tipo realizado)</div>
+                            </div>
+                            <span class="flecha">→</span>
+                            <div class="fase" style="background: #ffb74d; border-color: #ff9800;">
+                                <div class="fase-nombre">AGOTAMIENTO</div>
+                                <div class="fase-desc">Logro del propósito final</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ejemplo">
+                        <div class="ejemplo-titulo">Ejemplos de Agotamiento:</div>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li><strong>Homicidio con fines hereditarios:</strong>
+                                <ul style="margin-left: 20px; margin-top: 5px;">
+                                    <li><strong>Consumación:</strong> Con la muerte de la víctima</li>
+                                    <li><strong>Agotamiento:</strong> Cuando el autor consigue la posesión de la herencia</li>
+                                </ul>
+                            </li>
+                            <li><strong>Hurto:</strong>
+                                <ul style="margin-left: 20px; margin-top: 5px;">
+                                    <li><strong>Consumación:</strong> Con la apropiación de la cosa</li>
+                                    <li><strong>Agotamiento:</strong> Cuando el agente logra efectivamente el lucro perseguido (vende la cosa robada)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Secuestro con fines de rescate:</strong>
+                                <ul style="margin-left: 20px; margin-top: 5px;">
+                                    <li><strong>Consumación:</strong> Con la privación de libertad</li>
+                                    <li><strong>Agotamiento:</strong> Cuando recibe el rescate</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nota">
+                        <div class="nota-titulo">⚖️ Importancia del Agotamiento</div>
+                        <p style="margin-top: 10px;">El delito agotado cobra importancia en:</p>
+                        <ul style="margin-left: 20px; margin-top: 8px; line-height: 1.8;">
+                            <li><strong>Participación criminal:</strong> Especialmente en el encubrimiento</li>
+                            <li><strong>Materia civil:</strong> Transforma la obligación de <strong>restituir</strong> en la de <strong>indemnizar</strong></li>
+                        </ul>
+                        
+                        <div class="destacado" style="margin-top: 15px;">
+                            <p style="font-weight: bold; color: #c62828;">⚠️ IMPORTANTE:</p>
+                            <p style="margin-top: 8px;">El agotamiento <strong>NO tiene efectos</strong> sobre la pena del delito consumado. La pena se determina por la consumación, NO por el agotamiento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 10: ARREPENTIMIENTO EFICAZ -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">🔄</span>
+                    ARREPENTIMIENTO EFICAZ (Desistimiento Activo)
+                </div>
+                <div class="contenido">
+                    <div class="concepto">
+                        <div class="concepto-titulo">Concepto</div>
+                        <p style="line-height: 1.8;">
+                            Consiste en <strong>realizar una conducta que evita la lesión</strong> del bien jurídico, <strong>luego de haber concluido</strong> la ejecución de la conducta típica.
+                        </p>
+                        <p style="margin-top: 10px;">
+                            El agente realizó <strong>todos los actos necesarios</strong> para consumar el delito (frustración), pero falta la producción del resultado.
+                        </p>
+                    </div>
+                    
+                    <div class="diferencias" style="margin-top: 25px; grid-template-columns: 1fr 1fr;">
+                        <div class="box-dif" style="background: #e3f2fd; border-color: #2196f3;">
+                            <div class="box-titulo" style="color: #1565c0;">🛑 DESISTIMIENTO PASIVO</div>
+                            <ul style="line-height: 1.8;">
+                                <li><strong>Aplica en:</strong> TENTATIVA</li>
+                                <li><strong>Consiste en:</strong> Frenar la ejecución</li>
+                                <li><strong>Conducta:</strong> NO hacer (omitir)</li>
+                                <li><strong>Ejemplo:</strong> Apunta pero decide no disparar</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="box-dif" style="background: #f3e5f5; border-color: #9c27b0;">
+                            <div class="box-titulo" style="color: #6a1b9a;">🔄 ARREPENTIMIENTO EFICAZ</div>
+                            <ul style="line-height: 1.8;">
+                                <li><strong>Aplica en:</strong> FRUSTRACIÓN</li>
+                                <li><strong>Consiste en:</strong> Impedir el resultado</li>
+                                <li><strong>Conducta:</strong> ACTIVA (hacer algo)</li>
+                                <li><strong>Ejemplo:</strong> Dispara pero llama ambulancia y salva a la víctima</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="destacado" style="background: #c8e6c9; border-color: #66bb6a; margin-top: 20px;">
+                        <p style="font-weight: bold; color: #2e7d32; margin-bottom: 10px;">✓ El arrepentimiento eficaz es ACTIVO</p>
+                        <p>El sujeto tiene que <strong>realizar una conducta</strong> para impedir la producción del resultado.</p>
+                    </div>
+                    
+                    <div class="ejemplo" style="margin-top: 20px;">
+                        <div class="ejemplo-titulo">Ejemplo Clásico:</div>
+                        <p>Dar el <strong>antídoto</strong> a quien se suministró el veneno para que NO muera.</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Ya le dio el veneno (conducta completa = frustración)</li>
+                            <li>Se arrepiente y le da el antídoto (conducta activa)</li>
+                            <li>La víctima sobrevive (resultado evitado)</li>
+                            <li><strong>Consecuencia:</strong> IMPUNE por la frustración</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="concepto" style="margin-top: 25px;">
+                        <div class="concepto-titulo">Estructura del Arrepentimiento Eficaz</div>
+                        
+                        <p style="font-weight: bold; color: #667eea; font-size: 1.1em; margin: 20px 0 10px 0;">📍 ELEMENTOS OBJETIVOS</p>
+                        
+                        <div class="destacado">
+                            <p style="font-weight: bold; margin-bottom: 10px;">1️⃣ Debe ser ACTIVO</p>
+                            <p>Requiere una conducta positiva del autor para evitar el resultado.</p>
+                        </div>
+                        
+                        <div class="destacado" style="background: #fff3e0; border-color: #ff9800;">
+                            <p style="font-weight: bold; margin-bottom: 10px;">2️⃣ Debe ser DEFINITIVO</p>
+                            <p>La renuncia al plan delictivo debe ser definitiva, NO una mera suspensión.</p>
+                        </div>
+                        
+                        <div class="destacado" style="background: #e8f5e9; border-color: #4caf50;">
+                            <p style="font-weight: bold; margin-bottom: 10px;">3️⃣ Tiene que ser EFICAZ</p>
+                            <p>Debe lograr <strong>evitar efectivamente</strong> el resultado.</p>
+                        </div>
+                        
+                        <div class="nota" style="background: #ffebee; border-color: #f44336; margin-top: 15px;">
+                            <div class="nota-titulo" style="color: #c62828;">❌ Arrepentimientos Malogrados NO se toman en cuenta</div>
+                            <div class="ejemplo" style="margin-top: 10px;">
+                                <div class="ejemplo-titulo">Ejemplo:</div>
+                                <p>A arroja a alguien al río para ahogarle, luego se arrepiente y se arroja al río para salvarle, pero el sujeto <strong>ya había muerto</strong>.</p>
+                                <p style="margin-top: 10px; font-weight: bold; color: #c62828;">
+                                    → El agente responde de <strong>HOMICIDIO CONSUMADO</strong>
+                                </p>
+                                <p style="margin-top: 8px;">El arrepentimiento fue tardío e ineficaz.</p>
+                            </div>
+                        </div>
+                        
+                        <p style="font-weight: bold; color: #667eea; font-size: 1.1em; margin: 20px 0 10px 0;">📍 ELEMENTO SUBJETIVO</p>
+                        
+                        <div class="destacado" style="background: #fff3e0; border-color: #ff9800;">
+                            <p style="font-weight: bold; margin-bottom: 10px;">🎯 VOLUNTARIO</p>
+                            <p>El arrepentimiento debe ser voluntario. Aplica la <strong>Fórmula de Frank</strong>:</p>
+                            <div class="formula" style="margin-top: 10px;">
+                                "PUEDO pero NO QUIERO"
+                            </div>
+                            <p style="margin-top: 10px;">NO hay arrepentimiento eficaz si evita el resultado porque:</p>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>NO puede evitarlo (materialmente imposible)</li>
+                                <li>Por miedo a la pena</li>
+                                <li>Porque fue reconocido</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="articulo" style="margin-top: 20px;">
+                        <div class="articulo-num">📜 Fundamento Legal</div>
+                        <p style="font-style: italic; line-height: 1.7;">
+                            Se encuentra en el Art. 7° inc. 2°: Si la consumación NO se verifica por <strong>causas dependientes de la voluntad del autor</strong>, NO existe delito frustrado.
+                        </p>
+                    </div>
+                    
+                    <div class="destacado" style="background: #e1f5fe; border-color: #0288d1; margin-top: 20px;">
+                        <p style="font-weight: bold; margin-bottom: 10px;">⚖️ Naturaleza Jurídica: EXCUSA LEGAL ABSOLUTORIA</p>
+                        <p>Opera como causa de <strong>exclusión de la pena</strong>:</p>
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li>El hecho es típico</li>
+                            <li>El hecho es antijurídico</li>
+                            <li>El hecho es culpable</li>
+                            <li>Pero es <strong>IMPUNE</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 11: CASOS PRÁCTICOS DE DESISTIMIENTO -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">⚖️</span>
+                    CASOS PRÁCTICOS DE DESISTIMIENTO
+                </div>
+                <div class="contenido">
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 1: El Arrepentido que No Dispara</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A quiere matar a B, compra una pistola, va al domicilio de la víctima, espera que ésta salga, apunta con el arma hacia el cuerpo de B, pero <strong>al verla a la cara decide no disparar</strong> y se retira del lugar.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: DESISTIMIENTO PASIVO (IMPUNE)</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>Está en fase de <strong>tentativa</strong> (no ha disparado)</li>
+                                <li>"Puedo pero no quiero" → Voluntario</li>
+                                <li>NO será sancionado por tentativa de homicidio</li>
+                                <li>⚠️ Pero SÍ por porte ilegal de arma (delito consumado)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 2: Dispara pero Llama Ambulancia</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A le dispara a B, acierta en el blanco y lo deja herido, pero luego <strong>llama a un servicio de asistencia pública</strong> para que lo atiendan y le salven la vida, pero <strong>finalmente B muere</strong>.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: ARREPENTIMIENTO INEFICAZ (PUNIBLE)</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>Conducta completa (disparó)</li>
+                                <li>Intentó arrepentirse (llamó ambulancia) = Activo</li>
+                                <li>Pero fue <strong>INEFICAZ</strong> (B murió igual)</li>
+                                <li><strong>Resultado:</strong> HOMICIDIO CONSUMADO</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 3: El Ladrón que no Encuentra Nada</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A escala y logra entrar a una propiedad por la ventana, pero se da cuenta de que en dicho domicilio <strong>no hay nada de valor</strong> que valga la pena robar y se va del lugar sin sustraer especie alguna.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: TENTATIVA FRACASADA (PUNIBLE)</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>"Quiero pero no puedo" → NO es voluntario</li>
+                                <li>NO hay nada que valga la pena robar (causa externa)</li>
+                                <li><strong>Resultado:</strong> Tentativa de robo + Violación de morada + Daños</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 4: Se Asusta al Ver Foto del Fiscal</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A entra a robar mediante escalamiento a la casa de B, pero en una foto que estaba en el living <strong>identifica al fiscal</strong> del Ministerio Público, razón por la que <strong>se asusta y se arranca</strong> sin sustraer especie alguna.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: TENTATIVA FRACASADA (PUNIBLE)</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>"Quiero pero no puedo" (miedo a ser reconocido)</li>
+                                <li>El riesgo de ser identificado hace inconveniente continuar</li>
+                                <li>NO es desistimiento voluntario</li>
+                                <li><strong>Resultado:</strong> Tentativa de robo + Violación de morada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 5: La Escalera para Mejor Momento</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            El ladrón concurre en horas de la tarde al domicilio y <strong>deja instalada una escalera</strong> para entrar en la noche por una ventana que está abierta en el segundo piso. Luego se va a esperar la noche.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: NO HAY DESISTIMIENTO</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>NO es <strong>definitivo</strong></li>
+                                <li>Es una <strong>suspensión</strong> en la ejecución</li>
+                                <li>Espera un mejor momento</li>
+                                <li>Si es detenido: Tentativa de robo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 6: Error - Cree que ya Murió</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A dispara a B y al verlo caer, <strong>deja de disparar creyéndolo muerto</strong>, aunque sólo está herido levemente. Luego B se recupera.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: NO HAY DESISTIMIENTO</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>NO hay voluntariedad real</li>
+                                <li>Dejó de actuar por <strong>error</strong> (creyó consumado el delito)</li>
+                                <li><strong>Resultado:</strong> Homicidio frustrado + Lesiones consumadas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📌 CASO 7: Da Vuelta la Taza con Veneno por Inadvertencia</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            A pone veneno en el té de B. Luego, <strong>sin darse cuenta</strong>, da vuelta la taza derramando el contenido.
+                        </p>
+                        <div class="ejemplo" style="margin-top: 15px;">
+                            <div class="ejemplo-titulo">✓ Solución: NO HAY DESISTIMIENTO</div>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>NO hay voluntariedad</li>
+                                <li>Fue por <strong>inadvertencia</strong></li>
+                                <li><strong>Resultado:</strong> Homicidio frustrado (el resultado no se produjo por causa ajena a su voluntad consciente)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 12: CUADRO COMPARATIVO FINAL -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">📊</span>
+                    CUADRO COMPARATIVO: TENTATIVA vs FRUSTRACIÓN vs CONSUMACIÓN
+                </div>
+                <div class="contenido">
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>TENTATIVA</th>
+                                <th>FRUSTRACIÓN</th>
+                                <th>CONSUMACIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Conducta Típica</strong></td>
+                                <td>INCOMPLETA (faltan actos)</td>
+                                <td>COMPLETA (todos los actos realizados)</td>
+                                <td>COMPLETA</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Resultado</strong></td>
+                                <td>NO se produjo</td>
+                                <td>NO se produjo</td>
+                                <td>SÍ se produjo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Causa</strong></td>
+                                <td>Detuvo la ejecución</td>
+                                <td>Causa ajena a la voluntad</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pena (Autores)</strong></td>
+                                <td>-2 grados</td>
+                                <td>-1 grado</td>
+                                <td>Pena completa</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Desistimiento</strong></td>
+                                <td>PASIVO (no hacer)</td>
+                                <td>ACTIVO (arrepentimiento eficaz)</td>
+                                <td>NO procede</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ejemplo</strong></td>
+                                <td>Apunta pero no dispara</td>
+                                <td>Dispara pero no da en blanco</td>
+                                <td>Dispara y mata</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Sección 13: MAPA CONCEPTUAL FINAL -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">🗺️</span>
+                    MAPA CONCEPTUAL: RESUMEN DEL MÓDULO 3
+                </div>
+                <div class="contenido">
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; color: white;">
+                        <h3 style="text-align: center; margin-bottom: 25px; font-size: 1.5em;">ITER CRIMINIS - FRUSTRACIÓN, CONSUMACIÓN Y AGOTAMIENTO</h3>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                            <p style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">⚠️ DELITO FRUSTRADO</p>
+                            <ul style="margin-left: 25px; line-height: 1.8;">
+                                <li><strong>Concepto:</strong> Conducta completa + NO resultado + causa ajena</li>
+                                <li><strong>Penalidad:</strong> -1 grado (autores), -2 (cómplices), -3 (encubridores)</li>
+                                <li><strong>Teorías:</strong> Objetiva (depende del tipo) vs Subjetiva (depende del autor)</li>
+                                <li><strong>Solo en:</strong> Delitos de resultado material</li>
+                                <li><strong>Arrepentimiento eficaz:</strong> Activo + definitivo + eficaz + voluntario = IMPUNE</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                            <p style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">✅ DELITO CONSUMADO</p>
+                            <ul style="margin-left: 25px; line-height: 1.8;">
+                                <li><strong>Concepto:</strong> Realización completa del hecho típico</li>
+                                <li><strong>Penalidad:</strong> Pena completa señalada por la ley</li>
+                                <li><strong>Tipos según consumación:</strong>
+                                    <ul style="margin-left: 20px; margin-top: 5px;">
+                                        <li>Mera actividad (basta la conducta)</li>
+                                        <li>Resultado (se requiere resultado)</li>
+                                        <li>Instantáneos (se perfeccionan de inmediato)</li>
+                                        <li>Habituales (requieren repetición)</li>
+                                        <li>Continuados (pluralidad de conductas = 1 delito)</li>
+                                        <li>Permanentes (se sigue consumando mientras dure)</li>
+                                        <li>De estado (se consuma al crear el estado)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                            <p style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">🏁 AGOTAMIENTO</p>
+                            <ul style="margin-left: 25px; line-height: 1.8;">
+                                <li><strong>Concepto:</strong> Etapa posterior a consumación (logro del propósito final)</li>
+                                <li><strong>Importancia:</strong> Participación criminal y materia civil</li>
+                                <li><strong>Efectos:</strong> NO afecta la pena (se determina por consumación)</li>
+                                <li><strong>Ej.:</strong> Homicidio (consumación) → Obtener herencia (agotamiento)</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                            <p style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">🔄 DESISTIMIENTO Y ARREPENTIMIENTO</p>
+                            <ul style="margin-left: 25px; line-height: 1.8;">
+                                <li><strong>Desistimiento pasivo:</strong> Tentativa - Frenar ejecución - "Puedo pero no quiero"</li>
+                                <li><strong>Arrepentimiento eficaz:</strong> Frustración - Impedir resultado - Activo + Eficaz</li>
+                                <li><strong>Efecto:</strong> IMPUNIDAD (excusa legal absolutoria)</li>
+                                <li><strong>NO hay desistimiento:</strong> Tentativa fracasada ("Quiero pero no puedo")</li>
+                                <li><strong>Tentativa calificada:</strong> Delitos subyacentes consumados SÍ se castigan</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-top: 15px;">
+                            <p style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px;">🔑 FÓRMULAS CLAVE</p>
+                            <ul style="margin-left: 25px; line-height: 1.8;">
+                                <li><strong>Desistimiento voluntario:</strong> "PUEDO pero NO QUIERO"</li>
+                                <li><strong>Tentativa fracasada:</strong> "QUIERO pero NO PUEDO"</li>
+                                <li><strong>Delito continuado:</strong> Pluralidad de conductas + conexión = 1 delito</li>
+                                <li><strong>Delito permanente:</strong> Prescripción desde que cesa el estado</li>
+                                <li><strong>Delito de estado:</strong> Prescripción desde la consumación</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección 14: EJERCICIO INTEGRADOR -->
+            <div class="seccion">
+                <div class="seccion-titulo">
+                    <span class="icono">✏️</span>
+                    EJERCICIO INTEGRADOR FINAL
+                </div>
+                <div class="contenido">
+                    <div class="caso-practico">
+                        <div class="caso-titulo">📝 CASO COMPLEJO: Analiza el Iter Criminis Completo</div>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7;">
+                            <strong>FASE 1:</strong> A y B se conciertan para matar a C. A comprará la pistola y B vigilará la casa de C.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 2:</strong> A compra la pistola y la carga. B identifica los horarios de C.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 3:</strong> A se dirige al domicilio de C con la pistola cargada, lo espera afuera.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 4:</strong> C sale de su casa. A lo apunta con la pistola.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 5:</strong> A jala el gatillo pero el arma se traba.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 6 (ALTERNATIVA A):</strong> A arregla el arma, vuelve a apuntar pero al ver a C a los ojos decide no disparar y se va.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 6 (ALTERNATIVA B):</strong> A arregla el arma, dispara, hiere gravemente a C, pero llama inmediatamente a la ambulancia y C sobrevive.
+                        </p>
+                        <p style="background: #ecf0f1; padding: 15px; border-radius: 8px; line-height: 1.7; margin-top: 10px;">
+                            <strong>FASE 6 (ALTERNATIVA C):</strong> A arregla el arma, dispara y mata a C. Luego se apodera de su billetera.
+                        </p>
+                        
+                        <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 5px solid #4caf50;">
+                            <p style="font-weight: bold; color: #2e7d32; margin-bottom: 15px; font-size: 1.1em;">✓ SOLUCIONES:</p>
+                            
+                            <p style="font-weight: bold; margin-top: 15px;">FASE 1:</p>
+                            <p><strong>CONSPIRACIÓN</strong> (Art. 8 inc. 2° + Art. 15 N° 1)</p>
+                            <p style="margin-top: 5px;">Dos personas se conciertan para ejecutar un homicidio.</p>
+                            
+                            <p style="font-weight: bold; margin-top: 15px;">FASE 2:</p>
+                            <p><strong>ACTOS PREPARATORIOS</strong> (impunes en regla general)</p>
+                            <p style="margin-top: 5px;">Comprar arma y vigilar son preparación, no ejecución.</p>
+                            
+                            <p style="font-weight: bold; margin-top: 15px;">FASE 3:</p>
+                            <p><strong>TENTATIVA</strong> (Art. 7° inc. 3°)</p>
+                            <p style="margin-top: 5px;">Dirigirse con arma cargada = principio de ejecución (peligro inmediato).</p>
+                            
+                            <p style="font-weight: bold; margin-top: 15px;">FASE 4:</p>
+                            <p><strong>TENTATIVA</strong> (más avanzada)</p>
+                            <p style="margin-top: 5px;">Apuntar = acto ejecutivo claro.</p>
+                            
+                            <p style="font-weight: bold; margin-top: 15
